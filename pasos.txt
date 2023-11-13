@@ -12,3 +12,4 @@ creación de bucket
 
 Creación de SQS
 
+pip3 install boto3
