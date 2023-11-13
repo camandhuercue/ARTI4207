@@ -1,0 +1,14 @@
+Crear Permisos 
+ARTI4207-Policy
+Crear Rol
+EC2
+ARTI4207-Rol
+
+Crear EC2
+ARTI4207-EC2
+Asignar rol indicado
+
+creación de bucket
+
+Creación de SQS
+
