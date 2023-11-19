@@ -119,7 +119,19 @@ Esta URI la utilizaremos en los pasos posteriores.
 
 ## 3 - Creación de SQS
 
+Para crear una cola, en la consola de AWS buscamos el servicio SQS, una vez allí damos click en "Create queue". Como opciones ponemos lo siguiente:
+
+- Nombre: ARTI4207-SQS
+- Tipo: standar
+- Deshabilitamos el cifrado (Esto es para la PoC por lo que no hay necesidad de utilizar el cifrado)
+
+Una vez creada la cola, copiamos la URL asignada, ya que la utilizaremos posteriormente. Un ejemplo se observa a continación:
+
+https://sqs.us-east-1.amazonaws.com/{ID}/ARTI4207-SQS
+
 ## 4 - Creación de Bucket S3
+
+
 
 ## 5 - Creaicón de Máquina de Despliegue
 
