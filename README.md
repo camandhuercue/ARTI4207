@@ -24,15 +24,22 @@ Para el acceso entre servicios y determinar de manera correcta los privilegios d
 - ARTI4207-ECR: Acceso a crear una nueva imagen en el repositorio.
 ```
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "VisualEditor0",
-            "Effect": "Allow",
-            "Action": "ecr:PutImage",
-            "Resource": "*"
-        }
-    ]
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "VisualEditor0",
+			"Effect": "Allow",
+			"Action": [
+				"ecr:CompleteLayerUpload",
+				"ecr:GetAuthorizationToken",
+				"ecr:UploadLayerPart",
+				"ecr:InitiateLayerUpload",
+				"ecr:BatchCheckLayerAvailability",
+				"ecr:PutImage"
+			],
+			"Resource": "*"
+		}
+	]
 }
 ```
 
@@ -152,6 +159,44 @@ Una vez instalado el servicio en el sistema operativo procedemos a descargar del
 - AWS_UTILS.py: Este archivo contiene el uso del SDK de AWS para utilizar los servicios de S3 y SQS.
 
 A continuación mostramos los comandos para la creación de 
+
+```
+git clone https://github.com/camandhuercue/ARTI4207.git
+cd ARTI4207/Paso\ 1/
+```
+
+Modificamos el archivo main.py, específicamente las variables "BUCKET" y "SQS_URL". Un ejemplo se muestra a continuación:
+
+```
+BUCKET = 'arti4207-poc-2023'
+SQS_URL = 'https://sqs.us-east-1.amazonaws.com/{ID}/ARTI4207-SQS'
+```
+
+Posterior a esto, ejecutamos el siguiente comando:
+
+```
+sudo docker build . 
+```
+
+una vez creada la imagen, procedemos a subirla a AWS ECR con los siguientes comandos:
+
+```
+sudo apt-get install awscli -y
+aws ecr get-login-password --region us-east-1 | sudo docker login --username AWS --password-stdin {ID}.dkr.ecr.us-east-1.amazonaws.com
+```
+
+No debe de generar ningún error. Posterior a esto, procedemos a ekecutar el siguiete comando para extraer el ID de la imagen de docker
+
+```
+sudo docker images
+```
+
+Con el ID de la imagen, ejecutamos los siguientes comandos:
+```
+sudo docker tag 120746be79fb {ID}.dkr.ecr.us-east-1.amazonaws.com/arti4207-repo:arti4207_image
+
+```
+
 
 ## 6 - Creación de AWS Batch
 
