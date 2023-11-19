@@ -4,6 +4,7 @@ El objetivo de la siguiente documentación es dar una guia paso a paso de la cre
 
 Para esta PoC utilizaremos la siguiente ruta para probar los ASR propuestos. 
 
+![Arquitectura Propuesta para la PoC](https://github.com/camandhuercue/ARTI4207/blob/main/Arquitecturas%20Cloud%20-%20PoC%20-%20AWS.jpeg "Arquitectura propuesta para la PoC")
 
 Los servicios a utilizar son los siguientes:
 
