@@ -25,7 +25,7 @@ Los servicios a utilizar son los siguientes:
 
 ## 4 - Creación de SQS
 
-## 5 - Creación de SQS
+## 5 - Creación de Lambda
 
 ## 6 - Creación de Tabla de DynamoDB
 
