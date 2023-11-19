@@ -191,7 +191,7 @@ Ahora se procede a crear los roles que se asignarán a los distintos servicios a
 }
 ```
 
-- ARTI4207-Lambda-Metadata: Rol asignado a la lambda invocada desde la cola de SQS, se asigna la política ARTI4207-SQS-Lambda:
+- ARTI4207-Lambda-Metadata: Rol asignado a la lambda invocada desde la cola de SQS, se asigna la política ARTI4207-SQS-Lambda y ARTI4207-CWL:
 
 ```
 {
