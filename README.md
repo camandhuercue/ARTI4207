@@ -119,6 +119,18 @@ Esta URI la utilizaremos en los pasos posteriores.
 
 ## 3 - Creaicón de Máquina de Despliegue
 
+Con la finalidad de poder crear la imagen de docker que utilizaremos para descargar los datos y almecenarlos en S3 y notificar porteriormente a la cola de SQS, se necesita una instancia donde crearemos la imagen y la subiremos al repositorio creado anteriormente. Para esto, nos dirigimos al servicio de EC2 en la consola de AWS y creamos una nueva instancia con las siguientes características:
+
+- Tipo de máquina: t2.medium
+- OS: Ubuntu.
+- EBS: 10GB
+- IAM instance profile: ARTI4207-EC2
+- Se debe de considerar el acceso desde redes de internet y las llaver para acceso por SSH.
+
+Posterior a la creación de la nueva instancia, procedemos a instalar Docker en el OS. Para esto seguimos el proceso indicado en el sitio oficial de Docker (https://docs.docker.com/engine/install/ubuntu/).
+
+Una vez instalado 
+
 ## 4 - Creación de SQS
 
 ## 5 - Creación de Lambda
