@@ -14,4 +14,5 @@ Los servicios a utilizar son los siguientes:
 - AWS Lambda
 - AWS DynamoDB
 - AWS IAM
-  
+- AWS S3
+
