@@ -17,7 +17,57 @@ Los servicios a utilizar son los siguientes:
 - AWS IAM
 - AWS S3
 
-## 1 - Creación de Roles
+## 1 - Creación de Políticas y Roles
+
+Para el acceso entre servicios y determinar de manera correcta los privilegios de acceso de cada uno, se crearán las siguientes Políticas:
+
+- ARTI4207-ECR: Acceso a crear una nueva imagen en el repositorio.
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": "ecr:PutImage",
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+- ARTI4207-SQS: Acceso a crear un nuevo mensaje en la cola de SQS.
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": "sqs:SendMessage",
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+- ARTI4207-S3
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:GetObject"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
 
 ## 2 - Creación de Repositorio en ECR
 
