@@ -113,6 +113,24 @@ Para el acceso entre servicios y determinar de manera correcta los privilegios d
 }
 ```
 
+- ARTI4207-CWL: Política para crar logs en Cloudwatch Logs.
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
 **NOTA** Tener presente que es recomendable especificar los recursos a los que la política tendrá permisos, para no dejarlos a todos (*)
 
 Ahora se procede a crear los roles que se asignarán a los distintos servicios a utilizar, con esto brindamos los accesos necesarios para su utilziación. Para lograr este objetivo crearemos los siguientes roles:
@@ -133,7 +151,7 @@ Ahora se procede a crear los roles que se asignarán a los distintos servicios a
     ]
 }
 ```
-- ARTI4207-ECS: Este rol se asignará a los recursos de Fargate que se utilizarán para correr los Jobs de AWS Batch y permitirá al contenedor acceder a SQS y S3 con las políticas ARTI4207-SQS y ARTI4207-S3:
+- ARTI4207-ECS: Este rol se asignará a los recursos de Fargate que se utilizarán para correr los Jobs de AWS Batch y permitirá al contenedor acceder a SQS, S3 y ECR con las políticas ARTI4207-SQS, ARTI4207-S3, ARTI4207-ECR-ECS y ARTI4207-CWL para la creación de logs:
 
 ```
 {
@@ -262,6 +280,7 @@ Por último creamos el "Job definition". Para lograr esto nos dirigimos a la sec
 - ARTI4207-Job
 - Execution timeout: 300
 - Ephemeral storage: 21 (mínimo configurable)
+- Habilitamos la asignación de IP pública
 - Execution role: ARTI4207-ECS
 - Container configuration: En la imagen ponemos la URL del repositorio e imagen creadas anteriormente.
 - Command: ["python3","/workspace/main.py"]
