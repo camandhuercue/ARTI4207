@@ -131,7 +131,7 @@ Para el acceso entre servicios y determinar de manera correcta los privilegios d
 }
 ```
 
-- ARTI4207-SQS-Lambda:
+- ARTI4207-SQS-Lambda: Política para que la lambda pueda ser ejecutada por un evento de SQS
 
 ```
 {
@@ -145,6 +145,22 @@ Para el acceso entre servicios y determinar de manera correcta los privilegios d
                 "sqs:ReceiveMessage",
                 "sqs:GetQueueAttributes"
             ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+- ARTI4207-SNS: Política para que Lambda pueda publicar en un tópico.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": "sns:Publish",
             "Resource": "*"
         }
     ]
@@ -191,7 +207,7 @@ Ahora se procede a crear los roles que se asignarán a los distintos servicios a
 }
 ```
 
-- ARTI4207-Lambda-Metadata: Rol asignado a la lambda invocada desde la cola de SQS, se asigna la política ARTI4207-SQS-Lambda y ARTI4207-CWL:
+- ARTI4207-Lambda-Metadata: Rol asignado a la lambda invocada desde la cola de SQS, se asigna la política ARTI4207-SQS-Lambda y ARTI4207-CWL para publicar en cloudtrail logs. También es necesria la política ARTI4207-SNS para publicar en los tópicos y :
 
 ```
 {
@@ -330,10 +346,16 @@ Por último creamos el "Job definition". Para lograr esto nos dirigimos a la sec
 
 Dejamos el restante por defecto y finalizamos la configuración.
 
-
-
 ## 7 - Creación de Tabla de DynamoDB
 
-## 8 - Creación de Lambda
+## 8 - Creación de Tópico
 
-## 9 - Creación de Tópico
+## 9 - Creación de Lambda
+
+Para crear una nueva función, vamos al servicio de Lambda en la consola AWS y damos click en create function. Como opciones seleccionamos lo siguiente:
+
+- Author from scratch
+- Name: ARTI4207-Lambda
+- Runtime: Python 3.11
+- Execution role - Use an existing role: ARTI4207-Lambda-Metadata
+
