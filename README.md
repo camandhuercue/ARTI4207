@@ -194,11 +194,16 @@ sudo docker images
 Con el ID de la imagen, ejecutamos los siguientes comandos:
 ```
 sudo docker tag 120746be79fb {ID}.dkr.ecr.us-east-1.amazonaws.com/arti4207-repo:arti4207_image
-
+sudo docker push {ID}.dkr.ecr.us-east-1.amazonaws.com/arti4207-repo:arti4207_image
 ```
 
+Una vez finalizado el proceso, nos dirigimos al servicio de ECR y copiamos la URL de la imagen, la utilizaremos posteriormente para la configuraicón de AWS Batch. Un ejemplo se puede observar a continuación:
+
+{ID}.dkr.ecr.us-east-1.amazonaws.com/arti4207-repo:arti4207_image
 
 ## 6 - Creación de AWS Batch
+
+
 
 ## 7 - Creación de Tabla de DynamoDB
 
