@@ -111,6 +111,12 @@ Ahora se procede a crear los roles que se asignarán a los distintos servicios a
 
 ## 2 - Creación de Repositorio en ECR
 
+Para crear un nuevo repositorio, en la consola de AWS buscamos "Elastic Container Registry" > Repositories > Create repository. El repositorio lo crearemos "Privado" y como nombre ponemos "arti4207-repo". Con la creación del nuevo repositorio podemos obtener la URI en la cual alojaremos la imagen de docker que se desplegará en el proceso Batch. La URI es parecida a la que se observa a continuación.
+
+{id}.dkr.ecr.us-east-1.amazonaws.com/arti4207-repo
+
+Esta URI la utilizaremos en los pasos posteriores.
+
 ## 3 - Creaicón de Máquina de Despliegue
 
 ## 4 - Creación de SQS
