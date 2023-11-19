@@ -17,3 +17,16 @@ Los servicios a utilizar son los siguientes:
 - AWS IAM
 - AWS S3
 
+## 1 - Creación de Roles
+
+## 2 - Creación de Repositorio en ECR
+
+## 3 - Creaicón de Máquina de Despliegue
+
+## 4 - Creación de SQS
+
+## 5 - Creación de SQS
+
+## 6 - Creación de Tabla de DynamoDB
+
+## 7 - Creación de Bucket S3
