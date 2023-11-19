@@ -43,6 +43,43 @@ Para el acceso entre servicios y determinar de manera correcta los privilegios d
 }
 ```
 
+- ARTI4207-ECR-ECS: Política de lectura de ECR
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "ecr:DescribeRepositoryCreationTemplate",
+                "ecr:GetRegistryPolicy",
+                "ecr:DescribeImageScanFindings",
+                "ecr:GetLifecyclePolicyPreview",
+                "ecr:GetDownloadUrlForLayer",
+                "ecr:DescribeRegistry",
+                "ecr:DescribePullThroughCacheRules",
+                "ecr:DescribeImageReplicationStatus",
+                "ecr:GetAuthorizationToken",
+                "ecr:ListTagsForResource",
+                "ecr:ListImages",
+                "ecr:BatchGetRepositoryScanningConfiguration",
+                "ecr:GetRegistryScanningConfiguration",
+                "ecr:ValidatePullThroughCacheRule",
+                "ecr:BatchGetImage",
+                "ecr:DescribeImages",
+                "ecr:DescribeRepositories",
+                "ecr:BatchCheckLayerAvailability",
+                "ecr:GetRepositoryPolicy",
+                "ecr:GetLifecyclePolicy"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
 - ARTI4207-SQS: Acceso a crear un nuevo mensaje en la cola de SQS.
 ```
 {
@@ -202,6 +239,36 @@ Una vez finalizado el proceso, nos dirigimos al servicio de ECR y copiamos la UR
 {ID}.dkr.ecr.us-east-1.amazonaws.com/arti4207-repo:arti4207_image
 
 ## 6 - Creación de AWS Batch
+
+Ahora procedemos con la creación de los recursos para correr los procesos en Batch. Para esto nos dirigimos al servicio Batch de AWS y como primera tarea creamos un "Compute environments" que es donde correremos nuestro proceso. Para esto, vamos a "Compute environments" y damos click en create. Como opciones utilizamos lo siguiente:
+
+- Fargate
+- Name: ARTI4207-Fargate
+- Como es una PoC, habilitamos el uso de instancias spot.
+- Como máximo de vCPU, colocamos 1.
+- Configuramos la VPC y la subnet a la cual pertenecerá el cluster y finalizamos la configuración.
+
+Ahora crearemos los "job queue", Para ello nos dirigimos a la sección job queue > Create. Como opciones utilizamos las siguientes:
+
+- Fargate
+- ARTI4207-Queue
+- Como compute environments seleccionamos el recurso creado en el paso anterior.
+
+Con esto finalizamos la creación de la cola de trabajo.
+
+Por último creamos el "Job definition". Para lograr esto nos dirigimos a la sección Job definition > Create y configuramos las siguientes secciones:
+
+- Fargate
+- ARTI4207-Job
+- Execution timeout: 300
+- Ephemeral storage: 21 (mínimo configurable)
+- Execution role: ARTI4207-ECS
+- Container configuration: En la imagen ponemos la URL del repositorio e imagen creadas anteriormente.
+- Command: ["python3","/workspace/main.py"]
+- Job role configuration: ARTI4207-ECS
+- User: root
+
+Dejamos el restante por defecto y finalizamos la configuración.
 
 
 
