@@ -17,9 +17,9 @@ pip3 install boto3
 
 Se crea registro de docker
 
-aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 661717879436.dkr.ecr.us-east-1.amazonaws.com
-docker tag f2d2f379b1dc 661717879436.dkr.ecr.us-east-1.amazonaws.com/arti4207:arti4207_image
-docker push 661717879436.dkr.ecr.us-east-1.amazonaws.com/arti4207:arti4207_image
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin .dkr.ecr.us-east-1.amazonaws.com
+docker tag f2d2f379b1dc .dkr.ecr.us-east-1.amazonaws.com/arti4207:arti4207_image
+docker push .dkr.ecr.us-east-1.amazonaws.com/arti4207:arti4207_image
 
 Se crea fargate
 se crea job 
