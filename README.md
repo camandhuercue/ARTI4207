@@ -117,7 +117,11 @@ Para crear un nuevo repositorio, en la consola de AWS buscamos "Elastic Containe
 
 Esta URI la utilizaremos en los pasos posteriores.
 
-## 3 - Creaicón de Máquina de Despliegue
+## 3 - Creación de SQS
+
+## 4 - Creación de Bucket S3
+
+## 5 - Creaicón de Máquina de Despliegue
 
 Con la finalidad de poder crear la imagen de docker que utilizaremos para descargar los datos y almecenarlos en S3 y notificar porteriormente a la cola de SQS, se necesita una instancia donde crearemos la imagen y la subiremos al repositorio creado anteriormente. Para esto, nos dirigimos al servicio de EC2 en la consola de AWS y creamos una nueva instancia con las siguientes características:
 
@@ -129,12 +133,14 @@ Con la finalidad de poder crear la imagen de docker que utilizaremos para descar
 
 Posterior a la creación de la nueva instancia, procedemos a instalar Docker en el OS. Para esto seguimos el proceso indicado en el sitio oficial de Docker (https://docs.docker.com/engine/install/ubuntu/).
 
-Una vez instalado 
+Una vez instalado el servicio en el sistema operativo procedemos a descargar del presente git los archivos ubicados en la carpeta "Paso 1" donde encontraremos:
 
-## 4 - Creación de SQS
+- Dockerfile: Este archivo nos ayudará a crear la imagen de Docker con base Debian y copiando los archivos Python necesarios para descargar los dataset usando SODA API.
+- main.py: Este archivo contiene la lógica para descargar los dataset desde SODA API del MINTIC.
+- AWS_UTILS.py: Este archivo contiene el uso del SDK de AWS para utilizar los servicios de S3 y SQS.
 
-## 5 - Creación de Lambda
+A continuación mostramos los comandos para la creación de 
 
 ## 6 - Creación de Tabla de DynamoDB
 
-## 7 - Creación de Bucket S3
+## 7 - Creación de Lambda
