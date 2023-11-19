@@ -131,6 +131,26 @@ Para el acceso entre servicios y determinar de manera correcta los privilegios d
 }
 ```
 
+- ARTI4207-SQS-Lambda:
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "sqs:DeleteMessage",
+                "sqs:ReceiveMessage",
+                "sqs:GetQueueAttributes"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
 **NOTA** Tener presente que es recomendable especificar los recursos a los que la política tendrá permisos, para no dejarlos a todos (*)
 
 Ahora se procede a crear los roles que se asignarán a los distintos servicios a utilizar, con esto brindamos los accesos necesarios para su utilziación. Para lograr este objetivo crearemos los siguientes roles:
@@ -166,6 +186,27 @@ Ahora se procede a crear los roles que se asignarán a los distintos servicios a
                 ]
             },
             "Action": "sts:AssumeRole"
+        }
+    ]
+}
+```
+
+- ARTI4207-Lambda-Metadata: Rol asignado a la lambda invocada desde la cola de SQS, se asigna la política ARTI4207-SQS-Lambda:
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "sts:AssumeRole"
+            ],
+            "Principal": {
+                "Service": [
+                    "lambda.amazonaws.com"
+                ]
+            }
         }
     ]
 }
