@@ -153,8 +153,10 @@ Una vez instalado el servicio en el sistema operativo procedemos a descargar del
 
 A continuación mostramos los comandos para la creación de 
 
-## 6 - Creación de Tabla de DynamoDB
+## 6 - Creación de AWS Batch
 
-## 7 - Creación de Lambda
+## 7 - Creación de Tabla de DynamoDB
 
-## 8 - Creación de Tópico
+## 8 - Creación de Lambda
+
+## 9 - Creación de Tópico
