@@ -71,6 +71,44 @@ Para el acceso entre servicios y determinar de manera correcta los privilegios d
 
 **NOTA** Tener presente que es recomendable especificar los recursos a los que la política tendrá permisos, para no dejarlos a todos (*)
 
+Ahora se procede a crear los roles que se asignarán a los distintos servicios a utilizar, con esto brindamos los accesos necesarios para su utilziación. Para lograr este objetivo crearemos los siguientes roles:
+
+- ARTI4207-EC2: Este rol se asignará a la máquina de EC2 que utilicemos para desplegar el contenedor en el repositorio de AWS. Se asigna la política ARTI4207-ECR:
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "ec2.amazonaws.com"
+            },
+            "Action": "sts:AssumeRole"
+        }
+    ]
+}
+```
+- ARTI4207-ECS: Este rol se asignará a los recursos de Fargate que se utilizarán para correr los Jobs de AWS Batch y permitirá al contenedor acceder a SQS y S3 con las políticas ARTI4207-SQS y ARTI4207-S3:
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": [
+                    "ecs-tasks.amazonaws.com"
+                ]
+            },
+            "Action": "sts:AssumeRole"
+        }
+    ]
+}
+```
+
 ## 2 - Creación de Repositorio en ECR
 
 ## 3 - Creaicón de Máquina de Despliegue
