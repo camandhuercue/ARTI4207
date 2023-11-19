@@ -350,6 +350,10 @@ Dejamos el restante por defecto y finalizamos la configuración.
 
 ## 8 - Creación de Tópico
 
+ARTI4207-topico
+
+Se necesita el ARN del tópico.
+
 ## 9 - Creación de Lambda
 
 Para crear una nueva función, vamos al servicio de Lambda en la consola AWS y damos click en create function. Como opciones seleccionamos lo siguiente:
