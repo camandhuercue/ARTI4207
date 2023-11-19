@@ -131,7 +131,7 @@ https://sqs.us-east-1.amazonaws.com/{ID}/ARTI4207-SQS
 
 ## 4 - Creación de Bucket S3
 
-
+En la consola de AWS, buscamos el servicio de S3 y creamos un nuevo bucket. Para nuestro caso, se crea uno llamado "arti4207-poc-2023", dejamos el restante de opciones por defecto.
 
 ## 5 - Creaicón de Máquina de Despliegue
 
@@ -156,3 +156,5 @@ A continuación mostramos los comandos para la creación de
 ## 6 - Creación de Tabla de DynamoDB
 
 ## 7 - Creación de Lambda
+
+## 8 - Creación de Tópico
