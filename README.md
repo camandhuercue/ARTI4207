@@ -51,7 +51,7 @@ Para el acceso entre servicios y determinar de manera correcta los privilegios d
 }
 ```
 
-- ARTI4207-S3
+- ARTI4207-S3: Con esta política podemos leer y crear objetos en los buckets de S3
 ```
 {
     "Version": "2012-10-17",
@@ -68,6 +68,8 @@ Para el acceso entre servicios y determinar de manera correcta los privilegios d
     ]
 }
 ```
+
+**NOTA** Tener presente que es recomendable especificar los recursos a los que la política tendrá permisos, para no dejarlos a todos (*)
 
 ## 2 - Creación de Repositorio en ECR
 
