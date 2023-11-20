@@ -167,6 +167,22 @@ Para el acceso entre servicios y determinar de manera correcta los privilegios d
 }
 ```
 
+- ARTI4207-S3-Lambda
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": "s3:GetObject",
+            "Resource": "*"
+        }
+    ]
+}
+```
+
 **NOTA** Tener presente que es recomendable especificar los recursos a los que la política tendrá permisos, para no dejarlos a todos (*)
 
 Ahora se procede a crear los roles que se asignarán a los distintos servicios a utilizar, con esto brindamos los accesos necesarios para su utilziación. Para lograr este objetivo crearemos los siguientes roles:
@@ -207,7 +223,7 @@ Ahora se procede a crear los roles que se asignarán a los distintos servicios a
 }
 ```
 
-- ARTI4207-Lambda-Metadata: Rol asignado a la lambda invocada desde la cola de SQS, se asigna la política ARTI4207-SQS-Lambda y ARTI4207-CWL para publicar en cloudtrail logs. También es necesria la política ARTI4207-SNS para publicar en los tópicos y :
+- ARTI4207-Lambda-Metadata: Rol asignado a la lambda invocada desde la cola de SQS, se asigna la política ARTI4207-SQS-Lambda y ARTI4207-CWL para publicar en cloudtrail logs. También es necesria la política ARTI4207-SNS para publicar en los tópicos y ARTI4207-S3-Lambda para leer objetos de S3:
 
 ```
 {
