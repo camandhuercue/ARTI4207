@@ -167,7 +167,7 @@ Para el acceso entre servicios y determinar de manera correcta los privilegios d
 }
 ```
 
-- ARTI4207-S3-Lambda
+- ARTI4207-S3-Lambda: Política de lectura de objetos de S3
 
 ```
 {
@@ -183,7 +183,7 @@ Para el acceso entre servicios y determinar de manera correcta los privilegios d
 }
 ```
 
-- ARTI4207-Dynamo:
+- ARTI4207-Dynamo: Política de escritura de ítems sobre Dynamo DB
 
 ```
 {
@@ -239,7 +239,7 @@ Ahora se procede a crear los roles que se asignarán a los distintos servicios a
 }
 ```
 
-- ARTI4207-Lambda-Metadata: Rol asignado a la lambda invocada desde la cola de SQS, se asigna la política ARTI4207-SQS-Lambda y ARTI4207-CWL para publicar en cloudtrail logs. También es necesria la política ARTI4207-SNS para publicar en los tópicos y ARTI4207-S3-Lambda para leer objetos de S3:
+- ARTI4207-Lambda-Metadata: Rol asignado a la lambda invocada desde la cola de SQS, se asigna la política ARTI4207-SQS-Lambda y ARTI4207-CWL para publicar en cloudtrail logs. También es necesria la política ARTI4207-SNS para publicar en los tópicos y ARTI4207-S3-Lambda para leer objetos de S3. Por último usamos la política ARTI4207-Dynamo para acceder a Dynamo:
 
 ```
 {
