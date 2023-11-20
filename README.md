@@ -379,10 +379,10 @@ Para crear una nueva función, vamos al servicio de Lambda en la consola AWS y d
 - Runtime: Python 3.11
 - Execution role - Use an existing role: ARTI4207-Lambda-Metadata
 
-Posterior a la creación, tenemos que cargar el código que ejecutará la Lambda, para ello, en el presente Git, encontramos una carpeta llamada "Paso 2", donde encuentran el código "lambda_metadata.py" el cual es solo copiar y pegar. Luego, en la interfaz gráfica de Lambda, agregamos un nuevo trigger con los siguientes parámetros:
+Posterior a la creación, tenemos que cargar el código que ejecutará la Lambda, para ello, en el presente Git, encontramos una carpeta llamada "Paso 2", donde encuentran el código "lambda_metadata.py" el cual es solo copiar y pegar (modificar el nombre del bucket, la tabla de Dynamo y el ARN del tópico). Luego, en la interfaz gráfica de Lambda, agregamos un nuevo trigger con los siguientes parámetros:
 
 - Servicio: SQS.
 - Cola: el ARN de la cola creada anteriormente.
 - Batch size: 1
 
-El restante de opciones se deja por defecto.
+El restante de opciones se deja por defecto. 
