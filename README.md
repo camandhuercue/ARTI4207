@@ -366,9 +366,12 @@ Dejamos el restante por defecto y finalizamos la configuración.
 
 ## 8 - Creación de Tópico
 
-ARTI4207-topico
+Para la creación del tópico, en la consola de AWS buscamos el servicio de SNS. Nos dirigimos a la sección de topics, create topic. Los datos de creación son los siguientes:
 
-Se necesita el ARN del tópico.
+Tipo: Standard.
+Nombre: ARTI4207-topico
+
+Una vez creado el tópico, se debe de copiar y cuardar el ARN que se utiliará posteriormente.
 
 ## 9 - Creación de Lambda
 
