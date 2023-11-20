@@ -3,9 +3,9 @@ import boto3
 import sys
 import hashlib
 
-BUCKET = "arti4207-poc-2023"
-TOPIC = "arn:aws:sns:us-east-1:661717879436:ARTI4207-topico"
-DYNAMO = "ARTI4207-Dynamo"
+BUCKET = ""
+TOPIC = ""
+DYNAMO = ""
 
 def get_object(bucket, obj):
     client = boto3.client('s3')
