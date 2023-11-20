@@ -395,6 +395,6 @@ Para crear una nueva función, vamos al servicio de Lambda en la consola AWS y d
 - Name: ARTI4207-Lambda-Criterio
 - Runtime: Python 3.11
 
-El restante se deja por defecto. Posterior a la creación, tenemos que cargar el código que ejecutará la Lambda, para ello, en el presente Git, encontramos una carpeta llamada "Paso 2", donde encuentran el código "lambda_criterio.py". Este código solamente se encarga de hacer un print de la información enviada por el SNS.
+El restante se deja por defecto. Posterior a la creación, tenemos que cargar el código que ejecutará la Lambda, para ello, en el presente Git, encontramos una carpeta llamada "Paso 3", donde encuentran el código "lambda_criterios.py". Este código solamente se encarga de hacer un print de la información enviada por el SNS.
 
 En la interfaz gráfica, creamos un nuevo trigger, en esta ocación seleccionamos el servicio de SNS y seleccionamos el tópico creado anteriormente.
