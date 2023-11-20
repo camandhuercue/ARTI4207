@@ -183,6 +183,22 @@ Para el acceso entre servicios y determinar de manera correcta los privilegios d
 }
 ```
 
+- ARTI4207-Dynamo:
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": "dynamodb:PutItem",
+            "Resource": "*"
+        }
+    ]
+}
+```
+
 **NOTA** Tener presente que es recomendable especificar los recursos a los que la política tendrá permisos, para no dejarlos a todos (*)
 
 Ahora se procede a crear los roles que se asignarán a los distintos servicios a utilizar, con esto brindamos los accesos necesarios para su utilziación. Para lograr este objetivo crearemos los siguientes roles:
@@ -363,6 +379,18 @@ Por último creamos el "Job definition". Para lograr esto nos dirigimos a la sec
 Dejamos el restante por defecto y finalizamos la configuración.
 
 ## 7 - Creación de Tabla de DynamoDB
+
+Para el servicio de Dynamo, primero en la consola de AWS buscamos el servicio de Dynamo DB, posterior a eso nos dirigimos a Tables, create table. Utilozamos los siguientes parámetros:
+
+- Nombre: ARTI4207-Dynamo
+- Partition key: HASH
+- Customize settings
+- DynamoDB Standard
+- On-demand
+
+El restante se deja por defecto.
+
+
 
 ## 8 - Creación de Tópico
 
