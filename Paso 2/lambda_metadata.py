@@ -3,8 +3,8 @@ import boto3
 import sys
 import hashlib
 
-BUCKET = ""
-TOPIC = ""
+BUCKET = "arti4207-poc-2023"
+TOPIC = "arn:aws:sns:us-east-1:661717879436:ARTI4207-topico"
 DYNAMO = ""
 
 def get_object(bucket, obj):
@@ -23,13 +23,13 @@ def lambda_handler(event, context):
         sqs_batch_response = {}
         for record in event["Records"]:
             try:
-                publish_topic(TOPIC, record['body'])
+                publish_topic(TOPIC, Object['ID'])
                 Object =  json.loads(record['body'])
                 Bin = get_object(BUCKET, Object['ID'] + "/" + Object['ID'] + ".csv")
                 HASH = hashlib.sha256(Bin).hexdigest()
                 METADATA = {
                     'HASH': HASH,
-                    'ID': ID,
+                    'ID': Object['ID'],
                     'OWNER': Object['OWNER'],
                     'NAME': Object['NAME']
                 }
