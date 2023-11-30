@@ -409,6 +409,7 @@ Para crear una nueva función, vamos al servicio de Lambda en la consola AWS y d
 - Name: ARTI4207-Lambda
 - Runtime: Python 3.11
 - Execution role - Use an existing role: ARTI4207-Lambda-Metadata
+- Se debe de asignar 1GB de RAM y poner el timeout en 1 minuto.
 
 Posterior a la creación, tenemos que cargar el código que ejecutará la Lambda, para ello, en el presente Git, encontramos una carpeta llamada "Paso 2", donde encuentran el código "lambda_metadata.py" el cual es solo copiar y pegar (modificar el nombre del bucket, la tabla de Dynamo y el ARN del tópico). Luego, en la interfaz gráfica de Lambda, agregamos un nuevo trigger con los siguientes parámetros:
 
