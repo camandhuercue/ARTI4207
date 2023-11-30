@@ -45,6 +45,12 @@ def lambda_handler(event, context):
                     },
                     'NAME':{
                         'S': Object['NAME']
+                    },
+                    'EMAIL':{
+                        'S': Object['EMAIL']
+                    },
+                    'CATEGORY':{
+                        'S': Object['CATEGORY']
                     }
                 }
                 put_item_table(DYNAMO, METADATA)
